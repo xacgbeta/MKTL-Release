@@ -1,0 +1,29 @@
+<UserControl x:Class="MKTL.WPF.Views.DenuvoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="300">
+    <Grid Margin="15">
+        <StackPanel>
+            <TextBlock Text="Select Account:" Foreground="#888" Margin="0,0,0,5"/>
+            <ComboBox ItemsSource="{Binding Accounts}" SelectedItem="{Binding SelectedAccount}" 
+                      DisplayMemberPath="PersonaName" Height="30" Background="#3c3c3c" Foreground="White" Margin="0,0,0,10"/>
+            
+            <TextBlock Text="App ID:" Foreground="#888" Margin="0,0,0,5"/>
+            <TextBox Text="{Binding AppId}" Height="30" HorizontalContentAlignment="Center" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Output Path:" Foreground="#888" Margin="0,0,0,5"/>
+            <DockPanel Margin="0,0,0,10">
+                <Button DockPanel.Dock="Right" Content="..." Command="{Binding BrowseCommand}" Width="30"/>
+                <TextBox Text="{Binding OutputDir}" IsReadOnly="True"/>
+            </DockPanel>
+
+            <Button Content="GENERATE TICKET" Command="{Binding GenerateCommand}" 
+                    Height="35" Margin="0,0,0,10" Background="#555555" Foreground="White" FontWeight="Bold"/>
+
+            <TextBox Text="{Binding Log}" Height="150" IsReadOnly="True" 
+                     Background="#222" Foreground="#CCC" BorderThickness="0" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

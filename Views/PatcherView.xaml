@@ -1,0 +1,26 @@
+<UserControl x:Class="MKTL.WPF.Views.PatcherView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="15">
+        <StackPanel>
+            <TextBlock Text="Game Name (OnlineFix):" Foreground="#888" Margin="0,0,0,5"/>
+            <TextBox Text="{Binding SearchTerm}" Height="30" VerticalContentAlignment="Center" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Game Directory:" Foreground="#888" Margin="0,0,0,5"/>
+            <DockPanel Margin="0,0,0,10">
+                <Button DockPanel.Dock="Right" Content="..." Command="{Binding BrowseCommand}" Width="40"/>
+                <TextBox Text="{Binding SelectedFolder}" IsReadOnly="True"/>
+            </DockPanel>
+
+            <Button Content="PATCH GAME" Command="{Binding PatchGameCommand}" 
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                    Height="40" Margin="0,10" Background="#555555" Foreground="White"/>
+
+            <ProgressBar Value="{Binding Progress}" Height="5" Background="#333" BorderThickness="0" Margin="0,0,0,10"/>
+            
+            <TextBlock Text="Log:" Foreground="#888" Margin="0,0,0,5"/>
+            <TextBox Text="{Binding Log}" Height="120" IsReadOnly="True" 
+                     Background="#222" Foreground="#CCC" BorderThickness="0" TextWrapping="Wrap"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
